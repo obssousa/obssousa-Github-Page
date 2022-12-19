@@ -33,4 +33,11 @@ defineProps({
     margin: 4px 4px;
   }
 }
+
+@media (max-width: 550px) {
+  .content {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
 </style>
