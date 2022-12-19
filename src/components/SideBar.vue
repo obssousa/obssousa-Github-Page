@@ -9,7 +9,7 @@ const navItemRef = {
 }
 const router = useRouter()
 
-const navigateToHash = (hash) => {
+function navigateToHash (hash) {
   Object.keys(navItemRef).forEach((ref) => {
     navItemRef[ref].value[0].classList.remove('active')
   })

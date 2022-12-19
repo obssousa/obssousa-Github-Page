@@ -6,7 +6,7 @@ const props = defineProps({
   url: String
 })
 
-const openCertificate = () => {
+function openCertificate () {
   window.open(props.url, '_blank')
 }
 

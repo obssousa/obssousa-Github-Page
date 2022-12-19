@@ -3,10 +3,6 @@ import Card from '@/components/SectionCard.vue'
 import CertificateCard from '@/components/CertificateCard.vue'
 import { certificates } from '@/constants/certificates'
 
-defineProps({
-  msg: String
-})
-
 </script>
 
 <template>
