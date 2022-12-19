@@ -1,9 +1,17 @@
 <script setup>
+import { onMounted, ref } from 'vue'
 import useDevice from '@/hooks/useDevice'
 import SideBar from '@/components/SideBar.vue'
 import MobileBar from '@/components/MobileBar.vue'
 
 const { isMobile } = useDevice()
+const content = ref()
+
+onMounted(function upSpace () {
+  if (isMobile) {
+    content.value.classList.add('mobile')
+  }
+})
 
 </script>
 
@@ -11,7 +19,7 @@ const { isMobile } = useDevice()
     <div class="parent">
       <MobileBar v-if="isMobile" />
       <SideBar class="menu" v-if="!isMobile" />
-      <div class="content">
+      <div class="content" ref="content">
         <slot></slot>
       </div>
     </div>
@@ -35,13 +43,13 @@ $sidebarWidth: 260px;
 
 @media (max-width: 768px) {
   .parent {
-    .menu {
-      width: auto;
-      display: none;
-    }
     .content {
       margin: 20px;
       width: -webkit-fill-available;
+    }
+
+    .mobile {
+      margin-top: 70px;
     }
   }
 }
