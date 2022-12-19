@@ -1,10 +1,7 @@
 <script setup>
 import useDevice from '@/hooks/useDevice'
 import SideBar from '@/components/SideBar.vue'
-
-defineProps({
-  msg: String
-})
+import MobileBar from '@/components/MobileBar.vue'
 
 const { isMobile } = useDevice()
 
@@ -12,6 +9,7 @@ const { isMobile } = useDevice()
 
 <template>
     <div class="parent">
+      <MobileBar v-if="isMobile" />
       <SideBar class="menu" v-if="!isMobile" />
       <div class="content">
         <slot></slot>

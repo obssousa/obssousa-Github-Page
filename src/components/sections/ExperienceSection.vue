@@ -73,10 +73,11 @@ const activeNames = ['']
       color: $primaryText;
 
       .collapseItem {
-        background: $primaryColor;
+        background: $secondaryColor;
 
-        .q-collapse-item__body{
-          background: $secondaryColor !important;
+        button {
+          color: $secondaryColor !important;
+          background: $primaryColor !important;
         }
       }
 
