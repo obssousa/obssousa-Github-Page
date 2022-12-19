@@ -10,21 +10,27 @@ defineProps({
 </script>
 
 <template>
-  <Card class="content" title="certificados">
-    <CertificateCard
-      v-for="certificate in certificates"
-      :key="certificate.title"
-      :title="certificate.title"
-      :img="certificate.img"
-      :url="certificate.url"
-    />
+  <Card title="certificados" wrap>
+    <div class="content">
+      <CertificateCard
+        class="certificate"
+        v-for="certificate in certificates"
+        :key="certificate.title"
+        :title="certificate.title"
+        :img="certificate.img"
+        :url="certificate.url"
+      />
+    </div>
   </Card>
 </template>
 
 <style lang="scss" scoped>
 .content {
-    .collapse {
-      width: auto;
-    }
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  .certificate {
+    margin: 4px 4px;
   }
+}
 </style>

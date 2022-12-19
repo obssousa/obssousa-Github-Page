@@ -1,4 +1,4 @@
-const origamidLogo = 'https://camo.githubusercontent.com/fad076964153428686494d191eb53e5ae42a0438e1e70ebad2305064a4821f26/68747470733a2f2f646f6974792e636f6d2e62722f6d656469612f646f6974792f706172636569726f732f32313437345f706172636569726f2e706e67'
+const origamidLogo = '../origamid.png'
 const udemyLogo = 'https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg'
 const certificates =
   [

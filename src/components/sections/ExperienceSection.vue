@@ -19,6 +19,7 @@ const activeNames = ['']
   <Card class="content" title="experiência">
     <q-collapse class="collapse" v-model="activeNames" accordion>
       <q-collapse-item
+        class="collapseItem"
         v-for="organization in organizations"
         :key="organization.title"
         :title="collapseName(organization)"
@@ -62,11 +63,22 @@ const activeNames = ['']
 </template>
 
 <style lang="scss" scoped>
+@import '@/style.scss';
 .content {
     .collapse {
+      background: $secondaryColor;
       width: auto;
       text-align: justify;
       text-justify: inter-word;
+      color: $primaryText;
+
+      .collapseItem {
+        background: $primaryColor;
+
+        .q-collapse-item__body{
+          background: $secondaryColor !important;
+        }
+      }
 
       .office {
         display: flex;

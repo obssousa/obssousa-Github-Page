@@ -20,9 +20,11 @@ const { isMobile } = useDevice()
 </template>
 
 <style lang="scss" scoped>
+@import '@/style.scss';
 $sidebarWidth: 260px;
 .parent {
   display: flex;
+  background: $secondaryLightColor;
 
   .menu {
     width: $sidebarWidth;

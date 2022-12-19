@@ -10,8 +10,4 @@ library.add(faEnvelope)
 library.add(faTelegram)
 library.add(faPhone)
 
-// import { fas } from '@fortawesome/free-solid-svg-icons'
-// import { fab } from '@fortawesome/free-brands-svg-icons'
-// library.add(fas, fab)
-
 export default FontAwesomeIcon

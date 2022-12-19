@@ -1,7 +1,11 @@
 <script setup>
 
 defineProps({
-  title: String
+  title: String,
+  wrap: {
+    type: Boolean,
+    default: false
+  }
 })
 
 </script>
@@ -15,13 +19,12 @@ defineProps({
 </template>
 
 <style lang="scss" scoped>
-* {
-  box-sizing: border-box;
-}
+@import '@/style.scss';
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 24px;
-  background-color: #f1f1f1;
+  color: $secondaryText;
+  background-color: $secondaryColor;
 
   .content {
     text-align: center;

@@ -246,7 +246,6 @@ const navigationItems = reactive([
           }
 
           &:hover {
-
             &:before {
               right: 0;
             }
