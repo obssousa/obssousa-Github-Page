@@ -1,11 +1,19 @@
 <script setup>
+import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 
+const navItemRef = {
+  experience: ref(null),
+  skills: ref(null),
+  certificates: ref(null)
+}
 const router = useRouter()
-// const route = useRoute()
 
 const navigateToHash = (hash) => {
-  console.log(`#${hash}`)
+  Object.keys(navItemRef).forEach((ref) => {
+    navItemRef[ref].value[0].classList.remove('active')
+  })
+  navItemRef[hash].value[0].classList.add('active')
   router.push({ path: '/', hash: `#${hash}` })
 }
 
@@ -25,99 +33,108 @@ const openPhone = () => {
   window.open('tel:+5591985037834')
 }
 
+const contacts = reactive([
+  {
+    text: '(91) 985037834',
+    action: openPhone,
+    icon: 'phone'
+  },
+  {
+    text: 'obssousa@pm.me',
+    action: sendEmail,
+    icon: 'envelope'
+  },
+  {
+    text: '@obssousa',
+    action: openLinkedin,
+    icon: ['fab', 'linkedin']
+  },
+  {
+    text: '@obssousa',
+    action: openTelegram,
+    icon: ['fab', 'telegram']
+  }
+])
+
+const navigationItems = reactive([
+  {
+    text: 'Experiência',
+    action: navigateToHash,
+    ref: 'experience'
+  },
+  {
+    text: 'Habilidades',
+    action: navigateToHash,
+    ref: 'skills'
+  },
+  {
+    text: 'Certificados',
+    action: navigateToHash,
+    ref: 'certificates'
+  }
+])
+
 </script>
 
 <template>
 <header class="header" role="banner">
   <img class="portrait" src="@/assets/portrait.jpg" />
   <h1 class="name"> Bruno S. Sousa </h1>
-  <h5 class="telephone"> 24 anos </h5>
-  <div class="openContact">
+  <h5 class="subInfo"> 24 anos </h5>
+  <h5 class="subInfo"> Belém/PA, Brasil </h5>
+  <div
+    class="openContact"
+    v-for="contact in contacts"
+    :key="contact.icon"
+    >
     <div class="contact">
-      <q-button class="button" size="small" @click="openPhone" type="icon" theme="secondary">
-        <font-awesome-icon icon="phone" />
+      <q-button
+        class="button"
+        size="small"
+        @click="contact.action"
+        type="icon"
+        theme="secondary">
+        <font-awesome-icon :icon="contact.icon" />
       </q-button>
-      <span>(91) 985037834</span>
-    </div>
-    <div class="contact">
-      <q-button class="button" size="small" @click="sendEmail" type="icon" theme="secondary">
-        <font-awesome-icon icon="envelope" />
-      </q-button>
-      <span>obssousa@pm.me</span>
-    </div>
-    <div class="contact">
-      <q-button class="button" size="small" @click="openLinkedin" type="icon" theme="secondary">
-          <font-awesome-icon :icon="['fab', 'linkedin']" />
-      </q-button>
-      <span>@obssousa</span>
-    </div>
-    <div class="contact">
-      <q-button class="button" size="small" @click="openTelegram" type="icon" theme="secondary">
-          <font-awesome-icon :icon="['fab', 'telegram']" />
-      </q-button>
-      <span>@obssousa</span>
+      <span>{{ contact.text }}</span>
     </div>
   </div>
-  <hr class="divider" />
-  <div class="nav-wrap">
-    <nav class="main-nav" role="navigation">
-      <ul class="unstyled list-hover-slide">
-        <li>
-          <a
-            @mouseover="navigateToHash('experience')"
-            @click="navigateToHash('experience')">
-            Experiência
-          </a>
-        </li>
-        <li>
-          <a
-            @mouseover="navigateToHash('skills')"
-            @click="navigateToHash('skills')">
-            Habilidades
-          </a>
-        </li>
-        <li>
-          <a
-            @mouseover="navigateToHash('certificates')"
-            @click="navigateToHash('certificates')">
-            Certificados
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+  <nav class="navigation">
+    <ul class="groupItem">
+      <li
+        class="item"
+        v-for="item in navigationItems"
+        :key="item.ref"
+        :ref="navItemRef[item.ref]"
+      >
+        <a
+          class="itemName"
+          @mouseover="item.action(item.ref)"
+          @click="item.action">
+          {{ item.text }}
+        </a>
+      </li>
+    </ul>
+  </nav>
   <q-button class="button" theme="secondary">
       <font-awesome-icon icon="download" />
-      <span>Curriculo</span>
+      <span> Curriculo</span>
   </q-button>
 </header>
 </template>
 
 <style lang="scss" scoped>
-// COLORS
-$orange: #DF4500;
-$gray: #35302D;
-$gray-shine: #3C3735;
-$white-off: #DFDBD9;
+@import '@/style.scss';
 
-// REUSABLE STYLES
-.unstyled{ list-style: none; padding: 0; margin: 0;
-  a{ text-decoration: none; }
-}
-.list-inline{ overflow: hidden;
-  li{ float: left; }
-}
-
-// HEADER STYLES
-.header{
+.header {
   position: fixed;
   left: 0; top: 0; bottom: 0;
-  background: $gray;
+  background: $secondaryColor;
   box-shadow: 4px 4px 4px 0 rgb(0 0 0 / 20%);
   min-width: 260px;
 
   .portrait {
-    margin: 20px;
+    margin: 16px 8px 4px 8px;
     border-radius: 50%;
     width: -webkit-fill-available;
   }
@@ -126,13 +143,13 @@ $white-off: #DFDBD9;
     text-transform: lowercase;
     text-align: center;
     margin: 0;
-    color: $white-off;
+    color: $secondaryText;
   }
 
-  .telephone {
+  .subInfo {
     text-align: center;
     margin: 4px 0;
-    color: $white-off;
+    color: $secondaryText;
   }
 
   .openContact {
@@ -142,82 +159,99 @@ $white-off: #DFDBD9;
     .contact {
       margin: 4px 4px 4px 60px;
       text-align: center;
-      color: $white-off;
+      color: $primaryLightColor;
 
       > .button {
+        background-color: $primaryColor;
+        color: $secondaryColor;
         margin-right: 8px;
+        --box-shadow-default: none;
+
+        &:hover, &:active{
+          --box-shadow-pressed: none;
+          color: $secondaryLightColor;
+          background: $primaryLightColor;
+          box-shadow: 2px 2px 3px $primaryDarkColor;
+        }
       }
     }
-  }
-
-  .divider {
-    border-top: 8px solid #fff;
-    border-radius: 5px;
   }
 
   > .button {
     width: -webkit-fill-available;
     margin: 8px;
-  }
-}
+    background-color: $primaryColor;
+    color: $secondaryColor;
+    margin-right: 8px;
+    --box-shadow-default: none;
 
-// MAIN NAV
-.main-nav{
-
-  ul{
-    border-top: solid 1px $gray-shine;
-  }
-
-  li{
-    border-bottom: solid 1px $gray-shine;
-  }
-
-  a{
-    padding: 1.1em 0;
-    color: $white-off;
-    font: 400 1.125em;
-    text: {
-      align: center;
-      transform: lowercase;
+    &:hover, &:active{
+      --box-shadow-pressed: none !important;
+      color: $secondaryLightColor !important;
+      background: $primaryLightColor !important;
+      box-shadow: 2px 2px 3px $primaryDarkColor !important;
     }
 
-    &:hover{
-      color: #fff;
+    &:active {
+      background-color: none;
     }
   }
-}
+  .navigation {
+    margin: 8px 0px;
+    .groupItem {
+      padding: 0;
+      margin: 0;
+      .item {
+        position: relative;
+        overflow: hidden;
+        border-bottom: solid 1px $primaryDarkColor;
 
-// HOVER SLIDE EFFECT
-.list-hover-slide{
+        &:last-child {
+          border-bottom: none;
+        }
 
-  li{
-    position: relative;
-    overflow: hidden;
-  }
+        &.active {
+          display: block;
+          background: $secondaryLightColor;
+          transition: .65s ease left;
+          position: relative;
+          z-index: 1;
+        }
 
-  a{
-    display: block;
-    position: relative;
-    z-index: 1;
-    transition: .35s ease color;
+        .itemName{
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          text-decoration: none;
+          padding: 10px 0;
+          color: $secondaryText;
+          z-index: 1;
 
-    &:before{
-      content: '';
-      display: block;
-      z-index: -1;
-      position: absolute;
-      left: -100%; top: 0;
-      width: 100%; height: 100%;
-      border-right: solid 5px $orange;
-      background: $gray-shine;
-      transition: .35s ease left;
-    }
+          text: {
+            align: center;
+            transform: lowercase;
+          }
 
-    &.is-current,
-    &:hover{
+          &:before {
+            content: '';
+            display: block;
+            z-index: -1;
+            position: absolute;
+            right: -100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: $secondaryLightColor;
+            transition: .65s ease right;
+          }
 
-      &:before{
-        left: 0;
+          &:hover {
+
+            &:before {
+              right: 0;
+            }
+          }
+        }
       }
     }
   }
