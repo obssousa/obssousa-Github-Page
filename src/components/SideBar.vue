@@ -17,19 +17,23 @@ const navigateToHash = (hash) => {
   router.push({ path: '/', hash: `#${hash}` })
 }
 
-const sendEmail = () => {
+function sendEmail () {
   window.location = 'mailto:obssousa@pm.me'
 }
 
-const openLinkedin = () => {
+function openLinkedin () {
   window.open('https://www.linkedin.com/in/obssousa', '_blank')
 }
 
-const openTelegram = () => {
+function downloadCV () {
+  window.open('https://drive.google.com/file/d/1L8ND1FeleLTo6_5r0dTpw0IuHHA90h-F/view?usp=share_link', '_blank')
+}
+
+function openTelegram () {
   window.open('https://t.me/obssousa', '_blank')
 }
 
-const openPhone = () => {
+function openPhone () {
   window.open('tel:+5591985037834')
 }
 
@@ -116,7 +120,7 @@ const navigationItems = reactive([
       </li>
     </ul>
   </nav>
-  <q-button class="button" theme="secondary">
+  <q-button @click="downloadCV" class="button" theme="secondary">
       <font-awesome-icon icon="download" />
       <span> Curriculo</span>
   </q-button>
