@@ -66,16 +66,16 @@ const contacts = reactive([
     icon: 'phone'
   },
   {
+    action: openWhatsapp,
+    icon: ['fab', 'whatsapp']
+  },
+  {
     action: sendEmail,
     icon: 'envelope'
   },
   {
     action: openLinkedin,
     icon: ['fab', 'linkedin']
-  },
-  {
-    action: openWhatsapp,
-    icon: ['fab', 'whatsapp']
   }
 ])
 
