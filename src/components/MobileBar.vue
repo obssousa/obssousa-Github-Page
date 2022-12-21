@@ -46,7 +46,7 @@ async function downloadCV () {
   const a = document.createElement('a')
   a.style = 'display: none'
   a.href = Curriculo
-  a.download = 'Currículo - Bruno Santos de Sousa'
+  a.download = 'Currículo - Bruno Santos de Sousa.pdf'
   document.body.appendChild(a)
   a.click()
   document.body.removeChild(a)
