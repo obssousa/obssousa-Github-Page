@@ -1,6 +1,7 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
+import Curriculo from '@/assets/curriculo.pdf'
 
 const navItemRef = {
   experience: ref(null),
@@ -25,12 +26,18 @@ function openLinkedin () {
   window.open('https://www.linkedin.com/in/obssousa', '_blank')
 }
 
-function downloadCV () {
-  window.open('https://drive.google.com/file/d/1L8ND1FeleLTo6_5r0dTpw0IuHHA90h-F/view?usp=share_link', '_blank')
+async function downloadCV () {
+  const a = document.createElement('a')
+  a.style = 'display: none'
+  a.href = Curriculo
+  a.download = 'Currículo - Bruno Santos de Sousa'
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
 }
 
-function openTelegram () {
-  window.open('https://t.me/obssousa', '_blank')
+function openWhatsapp () {
+  window.open('https://wa.me/5591985037834', '_blank')
 }
 
 function openPhone () {
@@ -44,6 +51,11 @@ const contacts = reactive([
     icon: 'phone'
   },
   {
+    text: '(91) 985037834',
+    action: openWhatsapp,
+    icon: ['fab', 'whatsapp']
+  },
+  {
     text: 'obssousa@pm.me',
     action: sendEmail,
     icon: 'envelope'
@@ -52,11 +64,6 @@ const contacts = reactive([
     text: '@obssousa',
     action: openLinkedin,
     icon: ['fab', 'linkedin']
-  },
-  {
-    text: '@obssousa',
-    action: openTelegram,
-    icon: ['fab', 'telegram']
   }
 ])
 

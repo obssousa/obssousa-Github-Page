@@ -10,14 +10,14 @@ import {
 import {
   faVuejs,
   faLinkedin,
-  faTelegram
+  faWhatsapp
 } from '@fortawesome/free-brands-svg-icons'
 
 library.add(faDownload)
 library.add(faVuejs)
 library.add(faLinkedin)
 library.add(faEnvelope)
-library.add(faTelegram)
+library.add(faWhatsapp)
 library.add(faPhone)
 library.add(faChevronUp)
 library.add(faChevronDown)
