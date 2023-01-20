@@ -55,6 +55,20 @@ const skills = [
     color: '#F05033',
     years: 5,
     maxYears
+  },
+  {
+    title: 'StoryBlok',
+    icon: 'https://seeklogo.com/images/S/storyblok-icon-logo-F858B94590-seeklogo.com.png',
+    color: '#03B4B0',
+    years: 1,
+    maxYears
+  },
+  {
+    title: 'VTEX IO',
+    icon: 'https://avatars.githubusercontent.com/u/1288938?s=280&v=4',
+    color: '#F71963',
+    years: 1,
+    maxYears
   }
 ]
 
