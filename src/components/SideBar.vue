@@ -74,16 +74,27 @@ const navigationItems = reactive([
     ref: 'experience'
   },
   {
-    text: 'Habilidades',
-    action: navigateToHash,
-    ref: 'skills'
-  },
-  {
     text: 'Certificados',
     action: navigateToHash,
     ref: 'certificates'
   }
 ])
+
+function calculateAge (birthDate) {
+  const today = new Date()
+  const birth = new Date(birthDate)
+
+  let age = today.getFullYear() - birth.getFullYear()
+  const monthDiff = today.getMonth() - birth.getMonth()
+  const dayDiff = today.getDate() - birth.getDate()
+
+  // Adjust if the birth month and day haven't occurred yet this year
+  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+    age--
+  }
+
+  return age
+}
 
 </script>
 
@@ -91,7 +102,7 @@ const navigationItems = reactive([
 <header class="header" role="banner">
   <img class="portrait" src="@/assets/portrait.jpg" />
   <h1 class="name"> Bruno S. Sousa </h1>
-  <h5 class="subInfo"> 24 anos </h5>
+  <h5 class="subInfo"> {{ calculateAge('1998-03-19') }} anos </h5>
   <h5 class="subInfo"> Belém/PA, Brasil </h5>
   <div
     class="openContact"

@@ -30,6 +30,7 @@ onMounted(function upSpace () {
 $sidebarWidth: 260px;
 .parent {
   display: flex;
+  justify-content: center;
   background: $secondaryLightColor;
 
   .menu {
@@ -38,6 +39,8 @@ $sidebarWidth: 260px;
   .content {
     margin: 20px 20px 20px ($sidebarWidth + 20px);
     width: -webkit-fill-available;
+    min-height: calc(100vh - 40px);
+    max-width: 1200px;
   }
 }
 
