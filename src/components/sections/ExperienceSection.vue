@@ -17,7 +17,7 @@ const activeNames = ['']
 
 <template>
   <Card class="content" title="experiência">
-    <q-collapse class="collapse" v-model="activeNames" accordion>
+    <q-collapse class="collapse" v-model="activeNames">
       <q-collapse-item
         class="collapseItem"
         v-for="organization in organizations"
