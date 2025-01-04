@@ -1,6 +1,22 @@
 const organizations =
   [
     {
+      title: 'Parcelex',
+      start: 'janeiro/2022',
+      end: 'atualmente',
+      office: 'Desenvolvedor Front-End Pleno',
+      resume: 'Sou responsável por desenvolver e manter varios projetos de front-end, de paginas estaticas à e-commerce.',
+      stack: ['Vue.js', 'Nuxt.js', 'VTEX IO', 'React.js', 'Astro.js', 'Tailwind CSS', 'TypeScript', 'AWS' ],
+      assignments: [
+        'Diagramação de Interfaces',
+        'Design System',
+        'Integração com API',
+        'Pacotes NPM',
+        'CI/CD',
+        'Criação de Projetos'
+      ]
+    },
+    {
       title: 'Clicksign',
       start: 'outubro/2021',
       end: 'dezembro/2022',

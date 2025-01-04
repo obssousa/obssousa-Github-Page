@@ -2,7 +2,6 @@
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import ExperienceSection from '@/components/sections/ExperienceSection.vue'
 import CertificateSection from '@/components/sections/CertificateSection.vue'
-import SkillsSection from '@/components/sections/SkillsSection.vue'
 
 </script>
 
@@ -10,7 +9,6 @@ import SkillsSection from '@/components/sections/SkillsSection.vue'
   <DefaultLayout>
     <div>
       <ExperienceSection id="experience" />
-      <SkillsSection id="skills" />
       <CertificateSection id="certificates" />
     </div>
   </DefaultLayout>
